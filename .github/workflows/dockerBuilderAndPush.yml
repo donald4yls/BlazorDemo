@@ -2,20 +2,14 @@ name: Build Docker & Push
 
 on:
   workflow_run:
-    workflows: ["Build App"]
-    branch: [develop]
-    types: 
+    workflows: [Build App]
+    types:
       - completed
 
 jobs:
-  on-failure:
+  deploy-docker:
     runs-on: ubuntu-latest
-    if: ${{ github.event.workflow_run.conclusion == 'failure' }}
-    steps:
-      - run: echo 'The triggering workflow failed'
-  on-success:
-    runs-on: ubuntu-latest
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+
     steps:
       - run: echo 'The triggering workflow passed'
  
