@@ -6,8 +6,8 @@ EXPOSE 80
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
-COPY ["./WebApp1/WebApp1.csproj", "WebApp1/"]
-RUN dotnet restore "WebApp1/WebApp1.csproj"
+COPY ["WebApp1/WebApp1/WebApp1.csproj", "WebApp1/"]
+RUN dotnet restore "WebApp1/WebApp1/WebApp1.csproj"
 COPY . .
 WORKDIR "/src/WebApp1"
 RUN dotnet build "WebApp1.csproj" -c Release -o /app/build
