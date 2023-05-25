@@ -1,25 +1,46 @@
-# This is a basic workflow to help you get started with Actions
+name: Deploy Hello World
 
-name: TestCD
+on:
+  push:
+    branches:
+      - develop
+    tags:
+      - "v*-demo"
+  pull_request:
+    branches:
+      - 'master'
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
-  build:
-    # The type of runner that the job will run on
+  deploy-docker-hello-world:
     runs-on: ubuntu-latest
 
-    permissions:
-      contents: read
-      packages: write
-    env:
-      DATETIME: $(date +%F-%H-%M-%S)
-      REGISTRY: registry.cn-hangzhou.aliyuncs.com
-      PROJECT: demo
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Runs a single command using the runners shell
-      - name: Echo Time
-          export TZ='Asia/Shanghai'
-          echo "VERSION_TAG=`echo ${{ env.DATETIME }}`" >> $GITHUB_ENV
+      - uses: actions/checkout@v2
+
+      - name: Docker meta
+        id: meta
+        uses: docker/metadata-action@v4
+        with:
+          images: registry.cn-hangzhou.aliyuncs.com/donald-repo/demo
+          flavor: latest=true
+          tags: |
+            type=ref,event=branch
+            type=ref,event=pr
+            type=semver,pattern={{version}}
+
+      - name: Login to image repository
+        if: github.ref_type == 'tag'
+        uses: docker/login-action@v2
+        with:
+          registry: registry.cn-hangzhou.aliyuncs.com
+          username: ${{ secrets.DOCKER_USER_NAME }}
+          password: ${{ secrets.DOCKER_ACCESS_TOKEN }}
+
+      - name: Build and push
+        uses: docker/build-push-action@v3
+        with:
+          context: .
+          file: WebApp1/WebApp1/Dockerfile
+          push: ${{ github.ref_type == 'tag' }}
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
