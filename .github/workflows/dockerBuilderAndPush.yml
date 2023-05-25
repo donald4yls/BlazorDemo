@@ -6,10 +6,17 @@ on:
     types: [completed]
 
 jobs:
-  deploy-docker-hello-world:
+  on-failure:
     runs-on: ubuntu-latest
-
+    if: ${{ github.event.workflow_run.conclusion == 'failure' }}
     steps:
+      - run: echo 'The triggering workflow failed'
+  on-success:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    steps:
+      - run: echo 'The triggering workflow passed'
+ 
       - name: Check out the repo
         uses: actions/checkout@v3
       
