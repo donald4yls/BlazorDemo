@@ -2,9 +2,10 @@ name: Build Docker & Push
 
 on:
   workflow_run:
-    workflows: [Build App]
-    types:
-      - completed
+    workflows: ["Build App"]
+    types: [requested]
+    branches:
+      - 'develop'
 
 jobs:
   deploy-docker:
