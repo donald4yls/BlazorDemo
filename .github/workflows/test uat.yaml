@@ -4,13 +4,10 @@ on:
   push:
     branches: [develop]
 
-env:
-  deployEnv: Uat
+environment: Uat
 
 jobs:
   job1:
-    environment: 
-      name: uat
     runs-on: ubuntu-latest
 
     steps:
