@@ -5,10 +5,13 @@ on:
     branches: [develop]
 
 env:
-  environment: Uat
+  deployEnv: Uat
 
 jobs:
   job1:
+    environment: 
+      name: $deployEnv
+      
     runs-on: ubuntu-latest
 
     steps:
