@@ -4,7 +4,8 @@ on:
   push:
     branches: [develop]
 
-environment: Uat
+var:
+  environment: Uat
 
 jobs:
   job1:
