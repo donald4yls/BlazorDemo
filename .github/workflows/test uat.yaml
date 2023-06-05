@@ -1,0 +1,20 @@
+name: Variables in UAT
+
+on:
+  push:
+    branches: [develop]
+
+env:
+  BUILD_CONFIGURATION: Uat
+
+jobs:
+  job1:
+    environment: $deployEnv
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: First script from job1
+        run: echo We use the global workflow variable $BUILD_CONFIGURATION
+
+      - name： print var
+        run: echo ${{vars.CUSTOMVAR}}
