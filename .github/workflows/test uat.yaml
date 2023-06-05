@@ -10,8 +10,8 @@ env:
 jobs:
   job1:
     environment: 
-      name: $deployEnv
-      
+      name: ${{deployEnv}}
+
     runs-on: ubuntu-latest
 
     steps:
