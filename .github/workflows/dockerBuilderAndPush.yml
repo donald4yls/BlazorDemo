@@ -19,8 +19,9 @@ jobs:
         with:
             files: 'WebApp1/WebApp1/appsettings.Development.json'
         env:
-            ConnectionStrings.Default: ${{vars.DEFAULTCONNECTIONSTRING}}
+            ConnectionStrings.Default: ${{secrets.CONNECTION_STRING}}
             Url: https://github.com/${{github.repository}}
+            CustomVar: ${{vars.CustomVar}}
 
       - name: Test printing your secret (Remove this step in production)
         run: cat WebApp1/WebApp1/appsettings.Development.json
