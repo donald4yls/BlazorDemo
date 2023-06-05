@@ -4,11 +4,13 @@ on:
   push:
     branches: [ "develop" ]
 
+env:
+  deployEnv: uat
 
 jobs:
   deploy-docker:
     runs-on: ubuntu-latest
-    environment: uat
+    environment: $deployEnv
 
     steps:
       - run: echo 'The triggering workflow passed'
