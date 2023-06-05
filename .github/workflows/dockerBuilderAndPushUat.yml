@@ -1,4 +1,4 @@
-name: Build Docker & Push in Dev
+name: Build Docker & Push in UAT
 
 on:
   push:
@@ -6,11 +6,12 @@ on:
 
 env:
   # Setting an environment variable with the value of a configuration variable
-  environment: Dev
+  environment: Uat
 
 jobs:
   deploy-docker:
     runs-on: ubuntu-latest
+    environment: $environment
 
     steps:
       - run: echo 'The triggering workflow passed'
