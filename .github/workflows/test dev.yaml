@@ -9,7 +9,7 @@ env:
 
 jobs:
   job1:
-    environment: $deployEnv
+    environment: $env.deployEnv
     runs-on: ubuntu-latest
 
     steps:
@@ -18,6 +18,6 @@ jobs:
 
       - name: print env
         run: echo "$GITHUB_CONTEXT"
-        
+
       - name: print var
         run: echo ${{vars.CUSTOMVAR}}
