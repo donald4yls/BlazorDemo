@@ -16,5 +16,8 @@ jobs:
       - name: First script from job1
         run: echo We use the global workflow variable $deployEnv
 
+      - name: print env
+        run: echo "$GITHUB_CONTEXT"
+        
       - name: print var
         run: echo ${{vars.CUSTOMVAR}}
