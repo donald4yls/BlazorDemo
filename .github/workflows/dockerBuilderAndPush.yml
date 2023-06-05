@@ -20,7 +20,6 @@ jobs:
             files: 'WebApp1/WebApp1/appsettings.Development.json'
         env:
             ConnectionStrings.Default: ${{env.DEFAULTCONNECTIONSTRING}}
-            password: ${{ secrets.PASSWORD }}
             Url: https://github.com/${{github.repository}}
       
       - name: Log in to Docker Hub
