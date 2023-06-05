@@ -5,7 +5,7 @@ on:
     branches: [develop]
 
 env:
-  BUILD_CONFIGURATION: Dev
+  deployEnv: Dev
 
 jobs:
   job1:
@@ -14,7 +14,7 @@ jobs:
 
     steps:
       - name: First script from job1
-        run: echo We use the global workflow variable $BUILD_CONFIGURATION
+        run: echo We use the global workflow variable $deployEnv
 
-      - name： print var
+      - name: print var
         run: echo ${{vars.CUSTOMVAR}}
