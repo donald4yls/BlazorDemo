@@ -19,7 +19,7 @@ jobs:
         with:
             files: 'WebApp1/WebApp1/appsettings.Development.json'
         env:
-            ConnectionStrings.Default: ${{env.DEFAULTCONNECTIONSTRING}}
+            ConnectionStrings.Default: $DEFAULTCONNECTIONSTRING
             Url: https://github.com/${{github.repository}}
 
       - name: Test printing your secret (Remove this step in production)
