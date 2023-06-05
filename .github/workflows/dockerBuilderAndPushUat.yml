@@ -4,14 +4,11 @@ on:
   push:
     branches: [ "develop" ]
 
-env:
-  # Setting an environment variable with the value of a configuration variable
-  environment: Uat
 
 jobs:
   deploy-docker:
     runs-on: ubuntu-latest
-    environment: $environment
+    environment: uat
 
     steps:
       - run: echo 'The triggering workflow passed'
