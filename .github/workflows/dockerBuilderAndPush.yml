@@ -11,6 +11,7 @@ env:
 jobs:
   deploy-docker:
     runs-on: ubuntu-latest
+    environment: $environment
 
     steps:
       - run: echo 'The triggering workflow passed'
