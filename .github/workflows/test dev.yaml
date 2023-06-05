@@ -9,7 +9,8 @@ env:
 
 jobs:
   job1:
-    environment: echo $deployEnv
+    environment: 
+      name: $deployEnv
     runs-on: ubuntu-latest
 
     steps:
@@ -17,7 +18,7 @@ jobs:
         run: echo We use the global workflow variable $deployEnv
 
       - name: print env
-        run: echo "$GITHUB_ENV"
+        run: echo $deployEnv
 
       - name: print var
         run: echo ${{vars.CUSTOMVAR}}

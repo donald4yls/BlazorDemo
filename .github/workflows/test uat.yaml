@@ -9,7 +9,8 @@ env:
 
 jobs:
   job1:
-    environment: $deployEnv
+    environment: 
+      name: $deployEnv
     runs-on: ubuntu-latest
 
     steps:
