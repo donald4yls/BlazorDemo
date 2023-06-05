@@ -4,13 +4,11 @@ on:
   push:
     branches: [develop]
 
-env:
-  deployEnv: Dev
-
 jobs:
   job1:
-    environment: 
-      name: $deployEnv
+    environment: Dev
+    env:
+        deployEnv: Dev
     runs-on: ubuntu-latest
 
     steps:
