@@ -10,7 +10,7 @@ env:
 jobs:
   job1:
     environment: 
-      name: ${{env.deployEnv}}
+      name: ${deployEnv}
 
     runs-on: ubuntu-latest
 
