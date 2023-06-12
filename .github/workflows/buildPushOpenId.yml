@@ -1,10 +1,11 @@
-name: Build Docker & Push OpenId image.
+name: Build Docker Push OpenId image
 
 on:
   push:
     branches: [ "develop" ]
     paths:
       - 'OpenIdDemoV1/**'
+      - '.github/workflows/buildPushOpenId.yml'
 
 env:
   deployEnv: uat
