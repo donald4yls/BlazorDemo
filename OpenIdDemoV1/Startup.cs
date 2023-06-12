@@ -73,6 +73,7 @@ namespace OpenIdDemoV1
 
                     // Register the ASP.NET Core host and configure the ASP.NET Core options.
                     options.UseAspNetCore()
+                           .DisableTransportSecurityRequirement()
                            .EnableTokenEndpointPassthrough();
                 })
 
