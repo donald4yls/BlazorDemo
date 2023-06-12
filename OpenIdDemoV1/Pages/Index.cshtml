@@ -1,0 +1,15 @@
+﻿@page
+@using Microsoft.AspNetCore.Authentication
+
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+@if (!User.Identity.IsAuthenticated)
+{
+    <div>
+        <p>You are not signed in</p>
+        <p><a class="btn btn-sm btn-dark" asp-page="Login">Sign in</a></p>
+    </div>
+}
