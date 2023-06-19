@@ -11,8 +11,14 @@ namespace OpenIdDemoV1
     {
         public IConfiguration Configuration { get; }
 
-        public Startup(IConfiguration configuration)
-            => Configuration = configuration;
+        public Startup()
+        {
+            IConfigurationBuilder builder = new ConfigurationBuilder()
+                .AddJsonFile($"appsettings.json", true, true)
+                .AddEnvironmentVariables();
+
+            Configuration = builder.Build();
+        }
 
         public void ConfigureServices(IServiceCollection services)
         {
